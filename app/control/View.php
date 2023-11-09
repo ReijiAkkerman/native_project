@@ -1,8 +1,6 @@
 <?php
     namespace project\control;
 
-    use project\model\Calendar as m_Calendar;
-
     include_once __DIR__ . '/abstract/iView.php';
     include_once __DIR__ . '/../model/Calendar.php';
     include_once __DIR__ . '/../model/Words.php';
@@ -31,15 +29,30 @@
 
 
         public function main(): void {
-            $this->auth->validation() ? include __DIR__ . '/../view/main.php' : header('Location: ../view/login');
+            if($args) {
+
+            }
+            else {
+                $this->auth->validation() ? include __DIR__ . '/../view/main.php' : header('Location: ../view/login');
+            }
         }
 
-        public function calendar(): void {
-            $this->auth->validation() ? include __DIR__ . '/../view/calendar.php' : header('Location: ../view/login');
+        public function calendar($args = []): void {
+            if($args) {
+                
+            }
+            else {
+                $this->auth->validation() ? include __DIR__ . '/../view/calendar.php' : header('Location: ../view/login');
+            }
         }
 
         public function words(): void {
-            $this->auth->validation() ? include __DIR__ . '/../view/words.php' : header('Location: ../view/login');
+            if($args) {
+
+            }
+            else {
+                $this->auth->validation() ? include __DIR__ . '/../view/words.php' : header('Location: ../view/login');
+            }
         }
 
         

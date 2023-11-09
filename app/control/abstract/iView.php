@@ -10,5 +10,4 @@
         public function words(): void;
 
         public function error(): void;
-        public function test(): void;
     }

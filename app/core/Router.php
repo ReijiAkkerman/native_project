@@ -10,7 +10,6 @@
     include_once __DIR__ . '/../control/Test.php';
 
     class Router implements iRouter {
-        protected bool $is_get;
         public array $URI;
         protected string $controller;
         protected string $method;
@@ -23,7 +22,6 @@
                 else $this->args ? 
                     (new $this->controller)->{$this->method}($this->args) :
                     (new $this->controller)->{$this->method}();
-                    // (new View)->calendar();
             }
             else if($this->controller && $this->method) $this->args ?
                 (new $this->controller)->{$this->method}($this->args) :
@@ -32,13 +30,12 @@
         }
 
         public function __construct() {
-            $this->is_get = str_contains($_SERVER['REQUEST_URI'], '?');
             $this->getURI();
             $this->processURI();
         }
 
         private function getURI(): void {
-            if($this->is_get) {
+            if($_GET) {
                 $array = explode('?', $_SERVER['REQUEST_URI']);
                 $controls = explode('/', $array[0]);
                 $this->URI = $controls;
@@ -59,6 +56,19 @@
 
             $this->controller = !empty($controllerPart) ? 'project\control\\' . ucfirst($controllerPart) : '';
             $this->method = !empty($methodPart) ? $methodPart : '';
-            $this->args = !empty($argsPart) ? $argsPart : [];
+            if($_SERVER['REQUEST_METHOD'] == 'GET') {
+                if($_GET) {
+                    $this->args = [];
+                    foreach($_GET as $key => $value) {
+                        $this->args[$key] = $value;
+                    }
+                }
+                else {
+                    $this->args = !empty($argsPart) ? $argsPart : [];
+                }
+            }
+            else {
+                $this->args = !empty($argsPart) ? $argsPart : [];
+            }
         }
     }
