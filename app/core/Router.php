@@ -56,19 +56,6 @@
 
             $this->controller = !empty($controllerPart) ? 'project\control\\' . ucfirst($controllerPart) : '';
             $this->method = !empty($methodPart) ? $methodPart : '';
-            if($_SERVER['REQUEST_METHOD'] == 'GET') {
-                if($_GET) {
-                    $this->args = [];
-                    foreach($_GET as $key => $value) {
-                        $this->args[$key] = $value;
-                    }
-                }
-                else {
-                    $this->args = !empty($argsPart) ? $argsPart : [];
-                }
-            }
-            else {
-                $this->args = !empty($argsPart) ? $argsPart : [];
-            }
+            $this->args = !empty($argsPart) ? $argsPart : [];
         }
     }
