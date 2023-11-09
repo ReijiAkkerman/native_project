@@ -1,0 +1,82 @@
+.calendar_Calendar {
+    display: block;
+    position: relative;
+}
+
+.calendar_CalendarBody {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar_CalendarHeader {
+    display: grid;
+    position: sticky;
+    grid-template-columns: repeat(7, 1fr);
+    z-index: 2;
+}
+
+.calendar_CalendarBodyDay {
+    display: block;
+    position: relative;
+}
+
+.calendar_CalendarBodyDayHeader {
+    display: block;
+    position: sticky;
+    z-index: 1;
+}
+
+
+
+
+
+.calendar_Day {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.calendar_DayForm {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.calendar_DayFormInfo .timestamp {
+    display: block;
+    position: relative;
+}
+
+.calendar_DayFormInfo .timestamp > div {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.calendar_DayFormInfo .date, .calendar_DayFormInfo .time {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.calendar_DayFormButtons {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.calendar_DayFormButtons .main_buttons {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.calendar_DayFormButtons .main_buttons > div:last-of-type {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}

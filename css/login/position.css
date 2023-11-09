@@ -1,0 +1,10 @@
+.login_Login {
+    display: block;
+    position: relative;
+}
+
+.login_Login > form > div {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+}

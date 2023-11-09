@@ -1,0 +1,40 @@
+.registration_Registration {
+    margin: 100px auto;
+    border: #000 solid 1px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.registration_Registration input {
+    width: 400px;
+    font-size: 30px;
+    border-bottom: #000 solid 1px;
+    border-top: #000 solid 1px;
+    text-align: center;
+}
+
+.registration_Registration > form {
+    width: 800px;
+}
+
+.registration_Registration > form > div {
+    margin: 20px auto;
+    width: 600px;
+}
+
+.registration_Registration > form > div:nth-of-type(3) {
+    margin-bottom: 70px;
+}
+
+.registration_Registration > form > button {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 40px auto;
+    padding: 10px 20px;
+    border-left: #000 solid 1px;
+    border-right: #000 solid 1px;
+}
+
+.registration_Registration > form > button:hover {
+    background-color: #ddd;
+}

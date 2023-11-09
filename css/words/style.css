@@ -1,0 +1,12 @@
+.words_Words {
+    width: 100%;
+}
+
+.words_Words > div {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.words_Words pre {
+    font-size: 25px;
+}

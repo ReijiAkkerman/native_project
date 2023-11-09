@@ -1,0 +1,15 @@
+.registration_Registration {
+    display: block;
+    position: relative;
+}
+
+.registration_Registration > form {
+    display: block;
+    position: relative;
+}
+
+.registration_Registration > form > div {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+} 

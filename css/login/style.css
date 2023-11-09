@@ -1,0 +1,42 @@
+.login_Login {
+    margin: 200px auto;
+    border: #000 solid 1px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.login_Login input {
+    width: 400px;
+    font-size: 30px;
+    border-bottom: #000 solid 1px;
+    border-top: #000 solid 1px;
+    text-align: center;
+}
+
+.login_Login > form:first-of-type {
+    width: 800px;
+}
+
+.login_Login > form:first-of-type > div {
+    margin: 20px auto;
+    width: 600px;
+}
+
+.login_Login > form:first-of-type > button {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 40px auto;
+    padding: 10px 20px;
+    border-left: #000 solid 1px;
+    border-right: #000 solid 1px;
+}
+
+.login_Login > form:first-of-type > button:hover {
+    background-color: #ddd;
+}
+
+.login_Login > form:last-of-type > button {
+    font-size: 20px;
+    text-decoration: underline;
+    margin: 20px auto;
+}

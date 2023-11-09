@@ -1,0 +1,150 @@
+.calendar_CalendarHeader {
+    top: 61px;
+}
+
+.calendar_CalendarHeader > div {
+    text-align: center;
+    border-right: 1px #ddd solid;
+    border-left: 1px #ddd solid;
+    border-bottom: 2px #ddd solid;
+    background-color: #fff;
+}
+
+.calendar_CalendarBodyDay {
+    height: 200px;
+    border: 1px #ddd solid;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+.calendar_CalendarBodyDay:hover {
+    cursor: pointer;
+    border-color: #000;
+}
+
+.calendar_CalendarBodyDayHeader {
+    top: 0;
+    background-color: #0000;
+}
+
+.calendar_CalendarBodyDayHeader p {
+    font-size: 20px;
+}
+
+.calendar_CalendarBodyDayHeader > button {
+    width: 100%;
+}
+
+.calendar_CalendarBodyDayHeader > button:hover {
+    background-color: #bbb;
+}
+
+.calendar_CalendarBodyDayHeader > p {
+    text-align: center;
+}
+
+.calendar_CalendarBodyDayBody pre {
+    font-size: 18px;
+}
+
+.calendar_CalendarBodyDayBody > button {
+    border: 2px #0000 solid;
+    background-color: #eee;
+    width: 100%;
+}
+
+.calendar_CalendarBodyDayBody > button:hover {
+    border-color: #bbb;
+}
+
+#current_day {
+    background-color: #bbb;
+}
+
+
+
+
+
+.calendar_Day {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+}
+
+.calendar_DayForm {
+    width: fit-content;
+    border-radius: 10px;
+    border-left: 1px #000 solid;
+    border-right: 1px #000 solid;
+}
+
+.calendar_DayFormInfo {
+    margin: 20px 0 20px 20px;
+    padding: 10px 30px 10px 10px;
+}
+
+.calendar_DayFormInfo {
+    border-right: 1px #000 solid;
+}
+
+.calendar_DayFormInfo input {
+    border-top: 1px #000 solid;
+    border-bottom: 1px #000 solid;
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+}
+
+.calendar_DayFormInfo textarea {
+    border-top: 1px #000 solid;
+    border-bottom: 1px #000 solid;
+    width: 100%;
+    height: 200px;
+    resize: none;
+    font-size: 20px;
+}
+
+.calendar_DayFormInfo p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.calendar_DayFormInfo > form > div {
+    margin: 10px 0 0 0;
+}
+
+.calendar_DayFormInfo .timestamp input {
+    width: 60px;
+    margin: 10px;
+}
+
+.calendar_DayFormInfo .start, .calendar_DayFormInfo .end {
+    padding: 0 10px;
+    margin: 20px 10px;
+}
+
+.calendar_DayFormInfo .timestamp > div p {
+    font-weight: normal;
+}
+
+.calendar_DayFormButtons {
+    margin: 20px;
+}
+
+.calendar_DayFormButtons svg {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.calendar_DayFormButtons button {
+    padding: 10px;
+    border-right: 1px #0000 solid;
+}
+
+.calendar_DayFormButtons button:hover {
+    border-color: #000;
+}

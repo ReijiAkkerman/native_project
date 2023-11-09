@@ -1,0 +1,63 @@
+body {
+    display: block;
+    position: relative;
+}
+
+button {
+    display: block;
+    position: relative;
+}
+
+
+
+
+
+.header {
+    display: block;
+    position: sticky;
+    z-index: 10;
+}
+
+.common_Header {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+}
+
+.common_HeaderActions {
+    display: flex;
+    position: relative;
+    justify-content: start;
+}
+
+.common_HeaderActions > div {
+    display: flex;
+    position: relative;
+    justify-content: start;
+}
+
+.common_HeaderActions > div > form {
+    display: flex;
+    position: relative;
+    justify-content: start;
+}
+
+.common_HeaderActions > p {
+    margin: auto 10px;
+    font-size: 20px;
+}
+
+.common_HeaderActions .title {
+    display: block;
+    position: absolute;
+}
+
+
+
+
+
+.common_Navigation {
+    display: block;
+    position: fixed;
+    z-index: 10;
+}

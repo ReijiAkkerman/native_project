@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: #0000;
+    color: #000;
+    font-family: cyrillic;
+}
+
+*::-webkit-scrollbar {
+    width: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  transition: background-color 500000s ease-in-out 0s;
+}
+
+header {
+    border-bottom: #000 solid 1px;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+h6 {
+    font-weight: normal;
+    font-size: 40px;
+}
+
+svg {
+    fill: #000;
+    /* stroke: #000; */
+}
+
+
+
+
+
+.header {
+    top: 0;
+    background-color: #fff;
+    height: 60px;
+}
+
+.common_Header {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 1700px;
+    height: 100%;
+}
+
+.common_HeaderActions svg {
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    margin: 0 10px;
+}
+
+.common_HeaderActions > div {
+    padding-right: 10px;
+    border-right: 1px #000 solid;
+}
+
+.common_HeaderActions > button {
+    border-bottom: 1px #0000 solid;
+    border-top: 1px #0000 solid;
+}
+
+.common_HeaderActions > button:first-of-type {
+    padding: 0 10px;
+}
+
+.common_HeaderActions > button:hover {
+    border-bottom: 1px #000 solid;
+}
+
+.common_HeaderActions form {
+    box-sizing: border-box;
+    padding: 0 10px 0 15px;
+    margin: 5px 20px;
+    border-radius: 15px;
+    border: 1px #000 solid;
+}
+
+.common_HeaderActions form > input {
+    padding: 0 10px 0 0;
+    font-size: 20px;
+}
+
+.common_HeaderActions form svg {
+    width: 20px;
+    height: 20px;
+    padding: 0 0 0 10px;
+    margin: 0;
+    border-left: 1px #000 solid;
+    border-bottom: 1px #0000 solid;
+}
+
+.common_HeaderActions form svg:hover {
+    border-bottom: 1px #0000 solid;
+}
+
+.common_HeaderActions > div > button {
+    border-top: 1px #0000 solid;
+    border-bottom: 1px #0000 solid;
+}
+
+.common_HeaderActions > div > button:hover {
+    border-bottom: 1px #000 solid;
+}
+
+.common_HeaderActions .title {
+    top: -10px;
+    left: 0;
+}
+
+
+
+
+
+.common_Navigation {
+    top: 100px;
+    left: -60px;
+}
+
+.common_Navigation:hover {
+    left: -5px;
+}
+
+.common_Navigation svg {
+    padding-bottom: 5px;
+    width: 40px;
+    height: 40px;
+    border-bottom: 1px #0000 solid;
+}
+
+.common_Navigation svg:hover {
+    border-color: #000;
+}
+
+.common_NavigationMain {
+    border: 1px #000 solid;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.common_NavigationMain > a > div {
+    padding: 10px 10px 5px 15px;
+}
+
+#id {
+    font-size: 30px;
+}

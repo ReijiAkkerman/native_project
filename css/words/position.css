@@ -1,0 +1,14 @@
+.words_Words {
+    display: block;
+    position: relative;
+}
+
+.words_WordsSource {
+    display: block;
+    position: relative;
+}
+
+.words_WordsTranslation {
+    display: none;
+    position: relative;
+}
