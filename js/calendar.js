@@ -52,21 +52,12 @@ class Calendar {
     async saveEntry() {
         let data_element = document.querySelector('.calendar_Day form');
         let data = new FormData(data_element);
-        // let xhr = new XMLHttpRequest();
-        // xhr.open('GET', '../test/test');
-        // xhr.responseType = 'text';
-        // xhr.send();
-        // xhr.onload = function() {
-        //     alert(xhr.response);
-        // }
-
-        let xhr = await fetch('../test/test');
-        if(xhr.ok) {
-            let result = await xhr.text();
-            alert(result);
-        }
-        else {
-            alert(xhr.status);
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '../action/calendar/createEntry');
+        xhr.send(data);
+        xhr.responseType = 'text';
+        xhr.onload = () => {
+            alert(xhr.response);
         }
     }
 

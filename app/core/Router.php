@@ -1,19 +1,22 @@
 <?php
     namespace project\core;
 
-    use project\control\View as View;
-    use project\control\Auth as Auth;
+    // use project\control\View as View;
+    // use project\control\Auth as Auth;
+    // use project\control\Action as Action;
 
     include_once __DIR__ . '/abstract/iRouter.php';
     include_once __DIR__ . '/../control/View.php';
     include_once __DIR__ . '/../control/Auth.php';
+    include_once __DIR__ . '/../control/Action.php';
+
     include_once __DIR__ . '/../control/Test.php';
 
     class Router implements iRouter {
         public array $URI;
-        protected string $controller;
-        protected string $method;
-        protected array $args;
+        public string $controller;
+        public string $method;
+        public array $args;
 
         public function action(): void {
             if(isset($_COOKIE['id']) && isset($_COOKIE['confirming'])) {

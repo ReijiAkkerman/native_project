@@ -36,8 +36,8 @@
                     $id = $row['ID'];
                 }
                 if(password_verify(bin2hex($_POST['password']), $password)) {
-                    setcookie('id', $id, time() + (3600 * 24 * 30), '/view');
-                    setcookie('confirming', $password, time() + (3600 * 24 * 30), '/view');
+                    setcookie('id', $id, time() + (3600 * 24 * 30), '/');
+                    setcookie('confirming', $password, time() + (3600 * 24 * 30), '/');
                     
                     header('Location: ../view/main');
                     return true;
@@ -79,7 +79,7 @@
                 $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
                 $mysql->query("CREATE TABLE IF NOT EXISTS {$this->login} (
                     ID SERIAL,
-                    entry VARCHAR(255),
+                    title VARCHAR(255),
                     description TEXT,
                     creating_timestamp INT,
                     start_action INT,
@@ -99,8 +99,8 @@
                 foreach($data as $row) {
                     $id = (string) $row['ID'];
                 }
-                setcookie('id', $id, time() + (3600 * 24 * 30), '/view');
-                setcookie('confirming', $this->password_hash, time() + (3600 * 24 * 30), '/view');
+                setcookie('id', $id, time() + (3600 * 24 * 30), '/');
+                setcookie('confirming', $this->password_hash, time() + (3600 * 24 * 30), '/');
                 
                 header('Location: ../view/main');
                 return true;
@@ -112,8 +112,8 @@
         }
 
         public function logout(): void {
-            setcookie('id', '', time() - 1, '/view');
-            setcookie('confirming', '', time() - 1, '/view');
+            setcookie('id', '', time() - 1, '/');
+            setcookie('confirming', '', time() - 1, '/');
             header('Location: ../view/main');
         }
 
@@ -129,6 +129,14 @@
                 }
             }
             else return false;
+        }
+
+        public function getUser(): string {
+            $mysql = new \mysqli('localhost', 'User', 'kISARAGIeKI4', 'User');
+            $data = $mysql->query("SELECT login FROM user WHERE ID = {$_COOKIE['id']}");
+            foreach($data as $row) {
+                return $row['login'];
+            }
         }
 
 
