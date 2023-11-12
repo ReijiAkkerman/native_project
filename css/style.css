@@ -43,7 +43,10 @@ h6 {
 
 svg {
     fill: #000;
-    /* stroke: #000; */
+}
+
+[readonly] {
+    pointer-events: none;
 }
 
 

@@ -1,0 +1,1 @@
+<button><pre><?= $entries[$i]->title ?></pre></button>

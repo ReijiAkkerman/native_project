@@ -1,5 +1,7 @@
 <?php
     include_once __DIR__ . '/core/Calendar.php';
+
+    use project\view\Calendar as Calendar;
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +22,7 @@
                     <div>СБ</div>
                 </div>
                 <div class="calendar_CalendarBody">
-                <?php (new project\view\Calendar)->createCalendar() ?>
+                <?php (new Calendar)->createCalendar() ?>
                 </div>
             </section>
             <section class="calendar_Day">
@@ -44,15 +46,15 @@
                                             <div class="date">
                                                 <div>
                                                     <p>День</p>
-                                                    <input type="text" name="start_day" maxlength="2">
+                                                    <input type="text" name="start_day" maxlength="2" readonly>
                                                 </div>
                                                 <div>
                                                     <p>Месяц</p>
-                                                    <input type="text" name="start_month" maxlength="2">
+                                                    <input type="text" name="start_month" maxlength="2" readonly>
                                                 </div>
                                                 <div>
                                                     <p>Год</p>
-                                                    <input type="text" name="start_year" maxlength="4">
+                                                    <input type="text" name="start_year" maxlength="4" readonly>
                                                 </div>
                                             </div>
                                             <div class="time">
@@ -73,15 +75,15 @@
                                             <div class="date">
                                                 <div>
                                                     <p>День</p>
-                                                    <input type="text" name="end_day" maxlength="2">
+                                                    <input type="text" name="end_day" maxlength="2" readonly>
                                                 </div>
                                                 <div>
                                                     <p>Месяц</p>
-                                                    <input type="text" name="end_month" maxlength="2">
+                                                    <input type="text" name="end_month" maxlength="2" readonly>
                                                 </div>
                                                 <div>
                                                     <p>Год</p>
-                                                    <input type="text" name="end_year" maxlength="4">
+                                                    <input type="text" name="end_year" maxlength="4" readonly>
                                                 </div>
                                             </div>
                                             <div class="time">

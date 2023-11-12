@@ -4,16 +4,19 @@
     use project\control\Auth as Auth;
 
     include_once __DIR__ . '/abstract/iCalendar.php';
+    include_once __DIR__ . '/components/Calendar/Entries.php';
 
     class Calendar implements iCalendar {
+        public Entries $entries;
         private string $userName;
 
 
 
 
 
-        public function __construct() {
+        public function __construct(int $start_timelabel = null, int $end_timelabel = null) {
             $this->setProperties();
+            if($start_timelabel && $end_timelabel) $this->setEntries($start_timelabel, $end_timelabel);
         }
 
 
@@ -79,6 +82,12 @@
 
 
 
+
+        private function setEntries(int $start_timelabel, int $end_timelabel): void {
+            $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
+            $entries_data = $mysql->query("SELECT * FROM {$this->userName}");
+            $this->entries = new Entries($entries_data, $start_timelabel, $end_timelabel);
+        }
 
         private function setProperties(): void {
             $this->userName = (new Auth)->getUser();

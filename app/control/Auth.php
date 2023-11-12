@@ -77,14 +77,14 @@
                 $mysql->close();
                 
                 $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
-                $mysql->query("CREATE TABLE IF NOT EXISTS {$this->login} (
+                $mysql->query("CREATE TABLE IF NOT EXISTS {$this->login}(
                     ID SERIAL,
                     title VARCHAR(255),
                     description TEXT,
                     creating_timestamp INT,
                     start_action INT,
                     end_action INT,
-                    whole_day BOOLEAN,
+                    whole_day BOOLEAN
                 )");
                 $mysql->close();
 
