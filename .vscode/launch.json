@@ -43,7 +43,7 @@
             "port": 9003,
             "serverReadyAction": {
                 "pattern": "Development Server \\(http://localhost:([0-9]+)\\) started",
-                "uriFormat": "http://localhost:%s/view/registration",   //http://localhost:%s/login - примерно так записывать адрес для отладки
+                "uriFormat": "http://localhost:%s/view/calendar",   //http://localhost:%s/login - примерно так записывать адрес для отладки
                 "action": "openExternally"
             }
         }

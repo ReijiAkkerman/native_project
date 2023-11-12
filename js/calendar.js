@@ -4,6 +4,7 @@ class Calendar {
     constructor() {
         this.#shown = false;
         this.showNewEntry = this.showNewEntry.bind(this);
+        this.saveEntry = this.saveEntry.bind(this);
     }
 
     showNewEntry() {
@@ -49,16 +50,25 @@ class Calendar {
         }
     }
 
-    async saveEntry() {
+    saveEntry() {
         let data_element = document.querySelector('.calendar_Day form');
         let data = new FormData(data_element);
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '../action/calendar/createEntry');
         xhr.send(data);
-        xhr.responseType = 'text';
+        xhr.responseType = 'json';
         xhr.onload = () => {
-            alert(xhr.response);
+            this.#pasteEntry(xhr.response);
+            this.#displayNewEntry();
         }
+    }
+
+    #pasteEntry(data) {
+        let template = document.querySelector('template.calendar_CalendarBodyDayBody');
+        let element = template.content.cloneNode(true);
+        element.querySelector('pre').append(data['title']);
+        let insertionPlace = document.querySelector(`.${data['className']} .calendar_CalendarBodyDayBody`);
+        insertionPlace.append(element);
     }
 
     #displayNewEntry() {

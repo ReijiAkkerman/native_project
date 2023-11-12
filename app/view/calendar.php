@@ -111,5 +111,6 @@
         </footer>
         <script src="../../js/common.js"></script>
         <script src="../../js/calendar.js"></script>
+    <?php include_once __DIR__ . '/components/templates/calendar_CalendarBodyDayBody/button.php' ?>
     </body>
 </html>

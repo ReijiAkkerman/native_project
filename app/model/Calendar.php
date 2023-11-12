@@ -59,6 +59,10 @@
                     0
                 )");
             $entry->close();
+            echo "{
+                \"className\": \"date_{$_POST['start_year']}_{$_POST['start_month']}_{$_POST['start_day']}\",
+                \"title\": \"{$_POST['title']}\"
+            }";
         }
 
         public function changeEntry(): void {

@@ -25,6 +25,7 @@
 .calendar_CalendarBodyDayHeader {
     top: 0;
     background-color: #0000;
+    border-bottom: 1px #ddd solid;
 }
 
 .calendar_CalendarBodyDayHeader p {
@@ -48,13 +49,14 @@
 }
 
 .calendar_CalendarBodyDayBody > button {
-    border: 2px #0000 solid;
+    border: 1px #0000 solid;
+    border-bottom: 1px #bbb solid;
     background-color: #eee;
     width: 100%;
 }
 
 .calendar_CalendarBodyDayBody > button:hover {
-    border-color: #bbb;
+    border-color: #000;
 }
 
 #current_day {
