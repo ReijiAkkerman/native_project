@@ -27,7 +27,6 @@
         private function order() {
             $this->files = array_diff(scandir(__DIR__ . '/../../calendar_DayFormButtons', SCANDIR_SORT_NONE), ['..', '.']);
             $this->order = [
-                'edit',
                 'save'
             ];
         }

@@ -1,1 +1,1 @@
-<button><pre><?= $entries[$i]->title ?></pre></button>
+<button <?= "id=\"entry_{$entries[$i]->ID}\"" ?>><pre><?= $entries[$i]->title ?></pre></button>

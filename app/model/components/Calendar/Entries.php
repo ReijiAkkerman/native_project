@@ -4,15 +4,20 @@
     include_once __DIR__ . '/Entries/Entry.php';
 
     class Entries {
+        public int $last_ID;
+
         private array $array_entries;
 
         public function __construct(object $entries_data) {
+            $this->last_ID = 0;
             $this->setAllEntries($entries_data);
         }
 
-        public function &getEntriesOfDay(\DateTimeImmutable $day): array|null {
+        public function getEntriesOfDay(\DateTimeImmutable $day): array|null {
             $key = 'date_' . $day->format('o_n_j');
-            return $this->array_entries[$key];
+            $validation = array_key_exists($key, $this->array_entries);
+            if($validation) return $this->array_entries[$key];
+            else return null;
         }
 
 
@@ -35,6 +40,7 @@
                     $this->array_entries[$entry_date] = [];
                     $this->array_entries[$entry_date][] = $entry;
                 }
+                if($entry->ID > $this->last_ID) $this->last_ID = $entry->ID;
             }
         }
     }

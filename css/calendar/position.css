@@ -78,5 +78,5 @@
 .calendar_DayFormButtons .main_buttons > div:last-of-type {
     display: flex;
     position: relative;
-    flex-direction: column;
+    flex-direction: column-reverse;
 }

@@ -4,12 +4,20 @@ class Calendar {
     constructor() {
         this.#shown = false;
         this.showNewEntry = this.showNewEntry.bind(this);
+        this.showExistentEntry = this.showExistentEntry.bind(this);
         this.saveEntry = this.saveEntry.bind(this);
+        this.pasteEntry = this.pasteEntry.bind(this);
     }
 
     showNewEntry() {
-        this.#displayNewEntry();
+        this.#displayEntry();
         this.#showButtons_new();
+    }
+
+    showExistentEntry(event) {
+        this.#displayEntry();
+        this.#showButtons_existent();
+        event.stopPropagation();
     }
 
     showTitle() {
@@ -28,10 +36,12 @@ class Calendar {
         element.textContent = '';
     }
 
-    supplyFields() {
+    completeFields_newEntry() {
         let classnames = this.className.split(' ');
         let date = classnames[1].split('_');
         let datetime = new Date();
+        document.querySelector('[name="title"]').value = '';
+        document.querySelector('[name="description"]').value = '';
         document.querySelector('[name="start_year"]').value = date[1];
         document.querySelector('[name="start_month"]').value = date[2];
         document.querySelector('[name="start_day"]').value = date[3];
@@ -50,6 +60,30 @@ class Calendar {
         }
     }
 
+    completeFields_existentEntry() {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', `../action/calendar/getEntry?ID=${this.id}`);
+        xhr.send();
+        xhr.responseType = 'json';
+        xhr.onload = () => {
+            let element = document.querySelector('.calendar_DayFormInfo');
+            element.querySelector('[name="title"]').value = xhr.response['title'];
+            element.querySelector('[name="description"]').value = xhr.response['description'];
+            let time = new Date(xhr.response['start_action'] * 1000);
+            element.querySelector('[name="start_day"]').value = time.getDate();
+            element.querySelector('[name="start_month"]').value = time.getMonth();
+            element.querySelector('[name="start_year"]').value = time.getFullYear();
+            element.querySelector('[name="start_hour"]').value = time.getHours();
+            element.querySelector('[name="start_minute"]').value = time.getMinutes();
+            time.setTime(xhr.response['end_action'] * 1000);
+            element.querySelector('[name="end_day"]').value = time.getDate();
+            element.querySelector('[name="end_month"]').value = time.getMonth();
+            element.querySelector('[name="end_year"]').value = time.getFullYear();
+            element.querySelector('[name="end_hour"]').value = time.getHours();
+            element.querySelector('[name="end_minute"]').value = time.getMinutes();
+        };
+    }
+
     saveEntry() {
         let data_element = document.querySelector('.calendar_Day form');
         let data = new FormData(data_element);
@@ -58,20 +92,25 @@ class Calendar {
         xhr.send(data);
         xhr.responseType = 'json';
         xhr.onload = () => {
-            this.#pasteEntry(xhr.response);
-            this.#displayNewEntry();
-        }
+            this.pasteEntry(xhr.response);
+            this.#displayEntry();
+        };
+
+        let element = document.querySelectorAll('.calendar_CalendarBodyDayBody button');
+        element.addEventListener('click', calendar.showExistentEntry);
+        element.addEventListener('click', calendar.completeFields_existentEntry);
     }
 
-    #pasteEntry(data) {
+    pasteEntry(data) {
         let template = document.querySelector('template.calendar_CalendarBodyDayBody');
         let element = template.content.cloneNode(true);
+        element.querySelector('button').id = this.#getCurrentId(data['id']);
         element.querySelector('pre').append(data['title']);
         let insertionPlace = document.querySelector(`.${data['className']} .calendar_CalendarBodyDayBody`);
         insertionPlace.append(element);
     }
 
-    #displayNewEntry() {
+    #displayEntry() {
         let element = document.querySelector('.calendar_Day');
         if(this.#shown) {
             element.style.display = 'none';
@@ -104,6 +143,12 @@ class Calendar {
             element.style.display = 'block';
         }
     }
+
+    #getCurrentId(id) {
+        let id_number = id.split('_')[1];
+        id_number++;
+        return 'entry_' + id_number;
+    }
 }
 
 var calendar = new Calendar;
@@ -111,10 +156,14 @@ var calendar = new Calendar;
 document.addEventListener('DOMContentLoaded', function() {
     for(let element of document.querySelectorAll('.calendar_CalendarBodyDay')) {
         element.addEventListener('click', calendar.showNewEntry);
-        element.addEventListener('click', calendar.supplyFields);
+        element.addEventListener('click', calendar.completeFields_newEntry);
     }
     for(let element of document.querySelectorAll('.calendar_DayFormButtons button')) {
         element.addEventListener('mouseover', calendar.showTitle);
         element.addEventListener('mouseout', calendar.hideTitle);
+    }
+    for(let element of document.querySelectorAll('.calendar_CalendarBodyDayBody button')) {
+        element.addEventListener('click', calendar.showExistentEntry);
+        element.addEventListener('click', calendar.completeFields_existentEntry);
     }
 })

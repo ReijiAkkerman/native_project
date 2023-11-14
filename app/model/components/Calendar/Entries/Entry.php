@@ -7,6 +7,7 @@
         public \DateTimeImmutable $creation_timestamp;
         public string $title;
         public string $description;
+        public int $ID;
 
         private array $entry_data;
 
@@ -41,5 +42,6 @@
         private function setTextData(): void {
             $this->title = $this->entry_data['title'];
             $this->description = $this->entry_data['description'];
+            $this->ID = (int)$this->entry_data['ID'];
         }
     }

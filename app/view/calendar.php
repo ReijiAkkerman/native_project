@@ -2,6 +2,8 @@
     include_once __DIR__ . '/core/Calendar.php';
 
     use project\view\Calendar as Calendar;
+
+    $calendar = new Calendar;
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +24,7 @@
                     <div>СБ</div>
                 </div>
                 <div class="calendar_CalendarBody">
-                <?php (new Calendar)->createCalendar() ?>
+                <?php $calendar->createCalendar() ?>
                 </div>
             </section>
             <section class="calendar_Day">
@@ -31,11 +33,11 @@
                         <form action="#">
                             <div class="title">
                                 <p>Название</p>
-                                <input type="text" name="title">
+                                <input type="text" name="title" placeholder="Введите название...">
                             </div>
                             <div class="description">
                                 <p>Описание</p>
-                                <textarea name="description"></textarea>
+                                <textarea name="description" placeholder="Введите описание..."></textarea>
                             </div>
                             <div class="timestamp">
                                 <p>Время выполнения</p>

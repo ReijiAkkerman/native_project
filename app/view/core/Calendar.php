@@ -25,7 +25,7 @@
         }
 
         public function pasteEntries(): void {
-            $entries =& $this->calendar->entries->getEntriesOfDay($this->days_counter);
+            $entries = $this->calendar->entries->getEntriesOfDay($this->days_counter);
             if($entries) {
                 for($i = 0; $i < sizeof($entries); $i++) {
                     include __DIR__ . '/../components/calendar_CalendarBodyDay/button.php';

@@ -11,9 +11,6 @@
         </button>
     </div>
     <div class="calendar_CalendarBodyDayBody">
-    <?php
-        $this->pasteEntries()
-    ?>
-        <!-- <button><pre>some text</pre></button> -->
+    <?php $this->pasteEntries() ?>
     </div>
 </div>

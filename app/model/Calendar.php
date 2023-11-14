@@ -23,6 +23,23 @@
 
 
 
+        public function getEntry(): void {
+            $id = explode('_', $_GET['ID']);
+            $ID = (int)$id[1];
+            $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
+            $data = $mysql->query("SELECT * FROM {$this->userName} WHERE ID = $ID");
+            foreach($data as $row) {
+                echo <<<END
+                    {
+                        "title": "{$row['title']}",
+                        "description": "{$row['description']}",
+                        "start_action": {$row['start_action']},
+                        "end_action": {$row['end_action']}
+                    }
+                END;
+            }
+        }
+
         public function createEntry(): void {
             $creation_timestamp = time();
             $start_action = mktime(
@@ -61,7 +78,8 @@
             $entry->close();
             echo "{
                 \"className\": \"date_{$_POST['start_year']}_{$_POST['start_month']}_{$_POST['start_day']}\",
-                \"title\": \"{$_POST['title']}\"
+                \"title\": \"{$_POST['title']}\",
+                \"id\": \"entry_{$_COOKIE['last_ID']}\"
             }";
         }
 
@@ -91,6 +109,7 @@
             $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
             $entries_data = $mysql->query("SELECT * FROM {$this->userName}");
             $this->entries = new Entries($entries_data, $start_timelabel, $end_timelabel);
+            setcookie('last_ID', (string)$this->entries->last_ID, time() + 3600 * 24 * 30, '/');
         }
 
         private function setProperties(): void {
