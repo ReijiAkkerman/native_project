@@ -20,6 +20,11 @@
             else return null;
         }
 
+        public function getLastID($userName): int {
+            $this->setLastID($userName);
+            return $this->last_ID;
+        }
+
 
 
 

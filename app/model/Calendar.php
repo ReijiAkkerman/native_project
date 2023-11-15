@@ -63,7 +63,7 @@
                     0
                 )");
             $mysql->close();;
-            $entry_ID = $this->entries->last_ID + 1;
+            $entry_ID = $this->entries->getLastID($this->userName);
 
             echo <<<END
             {
@@ -112,7 +112,6 @@
             $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
             $entries_data = $mysql->query("SELECT * FROM {$this->userName}");
             $this->entries = new Entries($entries_data, $this->userName);
-            setcookie('last_ID', (string)$this->entries->last_ID, time() + 3600 * 24 * 30, '/');
         }
 
         private function setProperties(): void {
