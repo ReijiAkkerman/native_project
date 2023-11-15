@@ -10,7 +10,7 @@
             $method = $args[0];
 
             $calendar = new Calendar;
-            $calendar->$method();
+            $calendar->$method($args);
         }
 
         public function words() {

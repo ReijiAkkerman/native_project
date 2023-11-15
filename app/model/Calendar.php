@@ -23,41 +23,27 @@
 
 
 
-        public function getEntry(): void {
+        public function getEntry($args = null): void {
             $id = explode('_', $_GET['ID']);
             $ID = (int)$id[1];
             $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
             $data = $mysql->query("SELECT * FROM {$this->userName} WHERE ID = $ID");
             foreach($data as $row) {
                 echo <<<END
-                    {
-                        "title": "{$row['title']}",
-                        "description": "{$row['description']}",
-                        "start_action": {$row['start_action']},
-                        "end_action": {$row['end_action']}
-                    }
+                {
+                    "title": "{$row['title']}",
+                    "description": "{$row['description']}",
+                    "start_action": {$row['start_action']},
+                    "end_action": {$row['end_action']}
+                }
                 END;
             }
         }
 
-        public function createEntry(): void {
+        public function createEntry($args = null): void {
             $creation_timestamp = time();
-            $start_action = mktime(
-                (int)$_POST['start_hour'],
-                (int)$_POST['start_minute'],
-                0,
-                (int)$_POST['start_month'],
-                (int)$_POST['start_day'],
-                (int)$_POST['start_year']
-            );
-            $end_action = mktime(
-                (int)$_POST['end_hour'],
-                (int)$_POST['end_minute'],
-                0,
-                (int)$_POST['end_month'],
-                (int)$_POST['end_day'],
-                (int)$_POST['end_year']
-            );
+            $start_action = $this->getStartTimelabel();
+            $end_action = $this->getEndTimelabel();
 
             $entry = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
             $entry->query("INSERT INTO {$this->userName}(
@@ -76,15 +62,36 @@
                     0
                 )");
             $entry->close();
-            echo "{
-                \"className\": \"date_{$_POST['start_year']}_{$_POST['start_month']}_{$_POST['start_day']}\",
-                \"title\": \"{$_POST['title']}\",
-                \"id\": \"entry_{$_COOKIE['last_ID']}\"
-            }";
+            echo <<<END
+            {
+                "className": "date_{$_POST['start_year']}_{$_POST['start_month']}_{$_POST['start_day']}",
+                "title": "{$_POST['title']}",
+                "id": "entry_{$_COOKIE['last_ID']}"
+            }
+            END;
+            // echo "{
+            //     \"className\": \"date_{$_POST['start_year']}_{$_POST['start_month']}_{$_POST['start_day']}\",
+            //     \"title\": \"{$_POST['title']}\",
+            //     \"id\": \"entry_{$_COOKIE['last_ID']}\"
+            // }";
         }
 
-        public function changeEntry(): void {
-
+        public function changeEntry($args = null): void {
+            $start_action = $this->getStartTimelabel();
+            $end_action = $this->getEndTimelabel();
+            $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
+            $data = $mysql->query("UPDATE {$this->userName} SET
+                title = '{$_POST['title']}',
+                description = '{$_POST['description']}',
+                start_action = $start_action,
+                end_action = $end_action
+            WHERE ID = {$args[1]}");
+            echo <<<END
+            {
+                "id": "entry_{$args[1]}",
+                "title": "{$_POST['title']}"
+            }
+            END;
         }
 
         public function deleteEntry(): void {
@@ -114,5 +121,29 @@
 
         private function setProperties(): void {
             $this->userName = (new Auth)->getUser();
+        }
+
+        private function getStartTimelabel(): int {
+            $timelabel = mktime(
+                (int)$_POST['start_hour'],
+                (int)$_POST['start_minute'],
+                0,
+                (int)$_POST['start_month'],
+                (int)$_POST['start_day'],
+                (int)$_POST['start_year']
+            );
+            return $timelabel;
+        }
+
+        private function getEndTimelabel(): int {
+            $timelabel = mktime(
+                (int)$_POST['end_hour'],
+                (int)$_POST['end_minute'],
+                0,
+                (int)$_POST['end_month'],
+                (int)$_POST['end_day'],
+                (int)$_POST['end_year']
+            );
+            return $timelabel;
         }
     }

@@ -1,5 +1,8 @@
 class Calendar {
+    id;
+
     #shown;
+    #format;
 
     constructor() {
         this.#shown = false;
@@ -12,11 +15,13 @@ class Calendar {
     showNewEntry() {
         this.#displayEntry();
         this.#showButtons_new();
+        this.#format = 'createEntry';
     }
 
     showExistentEntry(event) {
         this.#displayEntry();
         this.#showButtons_existent();
+        this.#format = 'changeEntry';
         event.stopPropagation();
     }
 
@@ -71,13 +76,13 @@ class Calendar {
             element.querySelector('[name="description"]').value = xhr.response['description'];
             let time = new Date(xhr.response['start_action'] * 1000);
             element.querySelector('[name="start_day"]').value = time.getDate();
-            element.querySelector('[name="start_month"]').value = time.getMonth();
+            element.querySelector('[name="start_month"]').value = time.getMonth() + 1;
             element.querySelector('[name="start_year"]').value = time.getFullYear();
             element.querySelector('[name="start_hour"]').value = time.getHours();
             element.querySelector('[name="start_minute"]').value = time.getMinutes();
             time.setTime(xhr.response['end_action'] * 1000);
             element.querySelector('[name="end_day"]').value = time.getDate();
-            element.querySelector('[name="end_month"]').value = time.getMonth();
+            element.querySelector('[name="end_month"]').value = time.getMonth() + 1;
             element.querySelector('[name="end_year"]').value = time.getFullYear();
             element.querySelector('[name="end_hour"]').value = time.getHours();
             element.querySelector('[name="end_minute"]').value = time.getMinutes();
@@ -88,26 +93,48 @@ class Calendar {
         let data_element = document.querySelector('.calendar_Day form');
         let data = new FormData(data_element);
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', '../action/calendar/createEntry');
+        xhr.open('POST', `../action/calendar/${this.#format}/${this.id}`);
         xhr.send(data);
         xhr.responseType = 'json';
         xhr.onload = () => {
-            this.pasteEntry(xhr.response);
-            this.#displayEntry();
+            switch(this.#format) {
+                case 'createEntry':
+                    this.pasteEntry(xhr.response);
+                    this.#displayEntry();
+                    break;
+                case 'changeEntry':
+                    this.editEntry(xhr.response);
+                    this.#displayEntry();
+                    break;
+            }
         };
-
-        let element = document.querySelectorAll('.calendar_CalendarBodyDayBody button');
-        element.addEventListener('click', calendar.showExistentEntry);
-        element.addEventListener('click', calendar.completeFields_existentEntry);
     }
 
     pasteEntry(data) {
         let template = document.querySelector('template.calendar_CalendarBodyDayBody');
         let element = template.content.cloneNode(true);
-        element.querySelector('button').id = this.#getCurrentId(data['id']);
+        let id = this.#getCurrentId(data['id']);
+        element.querySelector('button').id = id;
         element.querySelector('pre').append(data['title']);
         let insertionPlace = document.querySelector(`.${data['className']} .calendar_CalendarBodyDayBody`);
         insertionPlace.append(element);
+
+        let button = document.querySelector(`#${id}`);
+        button.addEventListener('click', this.showExistentEntry);
+        button.addEventListener('click', this.completeFields_existentEntry);
+        button.addEventListener('click', this.setId);
+    }
+
+    editEntry(data) {
+        let button = document.querySelector(`#${data['id']}`);
+        let element = button.querySelector('pre');
+        element.textContent = '';
+        element.textContent = data['title'];
+    }
+
+    setId() {
+        let id = this.id.split('_')[1];
+        calendar.id = id;
     }
 
     #displayEntry() {
@@ -165,5 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
     for(let element of document.querySelectorAll('.calendar_CalendarBodyDayBody button')) {
         element.addEventListener('click', calendar.showExistentEntry);
         element.addEventListener('click', calendar.completeFields_existentEntry);
+        element.addEventListener('click', calendar.setId);
     }
 })
