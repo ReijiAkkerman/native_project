@@ -19,9 +19,9 @@
         }
 
         public function paste(): void {
-            for($i = 0; $i < sizeof($this->files); $i++) {
-                if(!in_array(substr($this->files[$i], 0, -4), $this->order)) { 
-                    $this->order[] = substr($this->files[$i], 0, -4);
+            foreach($this->files as $key => $value) {
+                if(!in_array(substr($value, 0, -4), $this->order)) {
+                    $this->order[] = substr($value, 0, -4);
                 }
             }
             for($i = 0; $i < sizeof($this->order); $i++) {

@@ -27,9 +27,9 @@
 
         private function paste_defaults(): void {
             $this->order_for_defaults();
-            for($i = 0; $i < sizeof($this->default_files); $i++) {
-                if(!in_array(substr($this->default_files[$i], 0, -4), $this->defaults_order)) {
-                    $this->defaults_order[] = substr($this->default_files[$i], 0, -4);
+            foreach($this->default_files as $key => $value) {
+                if(!in_array(substr($value, 0, -4), $this->defaults_order)) {
+                    $this->defaults_order[] = substr($value, 0, -4);
                 }
             }
             for($i = 0; $i < sizeof($this->defaults_order); $i++) {
@@ -43,9 +43,9 @@
             $method = 'order_for_' . (new Router)->URI[2];
             if(method_exists($this, $method)) {
                 $this->$method();
-                for($i = 0; $i < sizeof($this->specific_files); $i++) {
-                    if(!in_array(substr($this->specific_files[$i], 0, -4), $this->specifics_order)) {
-                        $this->specifics_order[] = substr($this->specific_files[$i], 0, -4);
+                foreach($this->specific_files as $key => $value) {
+                    if(!in_array(substr($value, 0, -4), $this->specifics_order)) {
+                        $this->specifics_order[] = substr($value, 0, -4);
                     }
                 }
                 for($i = 0; $i < sizeof($this->specifics_order); $i++) {

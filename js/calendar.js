@@ -9,6 +9,7 @@ class Calendar {
         this.showNewEntry = this.showNewEntry.bind(this);
         this.showExistentEntry = this.showExistentEntry.bind(this);
         this.saveEntry = this.saveEntry.bind(this);
+        this.deleteEntry = this.deleteEntry.bind(this);
         this.pasteEntry = this.pasteEntry.bind(this);
     }
 
@@ -97,6 +98,7 @@ class Calendar {
         xhr.send(data);
         xhr.responseType = 'json';
         xhr.onload = () => {
+            // alert(xhr.response);
             switch(this.#format) {
                 case 'createEntry':
                     this.pasteEntry(xhr.response);
@@ -106,20 +108,31 @@ class Calendar {
                     this.editEntry(xhr.response);
                     this.#displayEntry();
                     break;
-            }
+            };
+        };
+    }
+
+    deleteEntry() {
+        let xhr = new XMLHttpRequest();
+        xhr.open('DELETE', `../action/calendar/deleteEntry/${this.id}`);
+        xhr.send();
+        xhr.responseType = 'json';
+        xhr.onload = () => {
+            let element = document.querySelector(`#entry_${this.id}`);
+            element.remove();
+            this.#displayEntry();
         };
     }
 
     pasteEntry(data) {
         let template = document.querySelector('template.calendar_CalendarBodyDayBody');
         let element = template.content.cloneNode(true);
-        let id = this.#getCurrentId(data['id']);
-        element.querySelector('button').id = id;
+        element.querySelector('button').id = data['id'];
         element.querySelector('pre').append(data['title']);
         let insertionPlace = document.querySelector(`.${data['className']} .calendar_CalendarBodyDayBody`);
         insertionPlace.append(element);
 
-        let button = document.querySelector(`#${id}`);
+        let button = document.querySelector(`#${data['id']}`);
         button.addEventListener('click', this.showExistentEntry);
         button.addEventListener('click', this.completeFields_existentEntry);
         button.addEventListener('click', this.setId);
@@ -169,12 +182,6 @@ class Calendar {
         for(let element of existent_elements) {
             element.style.display = 'block';
         }
-    }
-
-    #getCurrentId(id) {
-        let id_number = id.split('_')[1];
-        id_number++;
-        return 'entry_' + id_number;
     }
 }
 

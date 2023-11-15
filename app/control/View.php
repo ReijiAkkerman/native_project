@@ -31,7 +31,7 @@
 
 
 
-        public function main(): void {
+        public function main($args = []): void {
             if($args) {
 
             }
@@ -49,7 +49,7 @@
             }
         }
 
-        public function words(): void {
+        public function words($args = []): void {
             if($args) {
 
             }

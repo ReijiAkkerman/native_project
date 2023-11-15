@@ -8,9 +8,9 @@
 
         private array $array_entries;
 
-        public function __construct(object $entries_data) {
-            $this->last_ID = 0;
+        public function __construct(object $entries_data, string $userName) {
             $this->setAllEntries($entries_data);
+            $this->setLastID($userName);
         }
 
         public function getEntriesOfDay(\DateTimeImmutable $day): array|null {
@@ -40,7 +40,24 @@
                     $this->array_entries[$entry_date] = [];
                     $this->array_entries[$entry_date][] = $entry;
                 }
-                if($entry->ID > $this->last_ID) $this->last_ID = $entry->ID;
             }
+        }
+
+        private function setLastID($userName): void {
+            $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
+            $data = $mysql->query("SELECT MAX(ID) as last_ID FROM $userName");
+            foreach($data as $row) {
+                if($row['last_ID']) $this->last_ID = $row['last_ID'];
+                else {
+                    $this->resetAutoIncrement($userName);
+                    $this->last_ID = 0;
+                }
+            }
+        }
+
+        private function resetAutoIncrement($userName): void {
+            $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
+            $mysql->query("ALTER TABLE $userName AUTO_INCREMENT = 0");
+            $mysql->close();
         }
     }

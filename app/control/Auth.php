@@ -114,6 +114,7 @@
         public function logout(): void {
             setcookie('id', '', time() - 1, '/');
             setcookie('confirming', '', time() - 1, '/');
+            setcookie('last_ID', '', time() - 1, '/');
             header('Location: ../view/main');
         }
 
@@ -127,6 +128,7 @@
                     if($row['password'] == $_COOKIE['confirming']) return true;
                     else return false;
                 }
+                // return false;
             }
             else return false;
         }
@@ -163,11 +165,11 @@
             $mysql->query("FLUSH PRIVILEGES");
 
             $mysql->query("CREATE USER 'Calendar'@'localhost' IDENTIFIED BY 'kISARAGIeKI4'");
-            $mysql->query("GRANT SELECT, INSERT, UPDATE, CREATE ON Calendar.* TO 'Calendar'@'localhost'");
+            $mysql->query("GRANT SELECT, INSERT, UPDATE, CREATE, DELETE, ALTER ON Calendar.* TO 'Calendar'@'localhost'");
             $mysql->query("FLUSH PRIVILEGES");
 
             $mysql->query("CREATE USER 'Words'@'localhost' IDENTIFIED BY 'kISARAGIeKI4'");
-            $mysql->query("GRANT SELECT, INSERT, UPDATE, CREATE ON Words.* TO 'Words'@'localhost'");
+            $mysql->query("GRANT SELECT, INSERT, UPDATE, CREATE, DELETE, ALTER ON Words.* TO 'Words'@'localhost'");
             $mysql->query("FLUSH PRIVILEGES");
 
             $mysql->close();

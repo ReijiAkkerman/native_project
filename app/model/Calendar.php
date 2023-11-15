@@ -16,7 +16,7 @@
 
         public function __construct(int $start_timelabel = null, int $end_timelabel = null) {
             $this->setProperties();
-            if($start_timelabel && $end_timelabel) $this->setEntries($start_timelabel, $end_timelabel);
+            $this->setEntries();
         }
 
 
@@ -38,6 +38,7 @@
                 }
                 END;
             }
+            $mysql->close();
         }
 
         public function createEntry($args = null): void {
@@ -45,8 +46,8 @@
             $start_action = $this->getStartTimelabel();
             $end_action = $this->getEndTimelabel();
 
-            $entry = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
-            $entry->query("INSERT INTO {$this->userName}(
+            $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
+            $mysql->query("INSERT INTO {$this->userName}(
                     title,
                     description,
                     creating_timestamp,
@@ -61,31 +62,28 @@
                     $end_action,
                     0
                 )");
-            $entry->close();
+            $mysql->close();;
+            $entry_ID = $this->entries->last_ID + 1;
+
             echo <<<END
             {
                 "className": "date_{$_POST['start_year']}_{$_POST['start_month']}_{$_POST['start_day']}",
                 "title": "{$_POST['title']}",
-                "id": "entry_{$_COOKIE['last_ID']}"
+                "id": "entry_$entry_ID"
             }
             END;
-            // echo "{
-            //     \"className\": \"date_{$_POST['start_year']}_{$_POST['start_month']}_{$_POST['start_day']}\",
-            //     \"title\": \"{$_POST['title']}\",
-            //     \"id\": \"entry_{$_COOKIE['last_ID']}\"
-            // }";
         }
 
         public function changeEntry($args = null): void {
             $start_action = $this->getStartTimelabel();
             $end_action = $this->getEndTimelabel();
             $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
-            $data = $mysql->query("UPDATE {$this->userName} SET
-                title = '{$_POST['title']}',
-                description = '{$_POST['description']}',
-                start_action = $start_action,
-                end_action = $end_action
-            WHERE ID = {$args[1]}");
+
+            $str = "UPDATE {$this->userName} SET title = '{$_POST['title']}', description = '{$_POST['description']}', start_action = $start_action, end_action = $end_action WHERE ID = {$args[1]}";
+
+            $data = $mysql->query($str);
+            $mysql->close();
+
             echo <<<END
             {
                 "id": "entry_{$args[1]}",
@@ -94,12 +92,10 @@
             END;
         }
 
-        public function deleteEntry(): void {
-
-        }
-
-        public function deleteEntries(): void {
-            
+        public function deleteEntry($args = null): void {
+            $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
+            $mysql->query("DELETE FROM {$this->userName} WHERE ID = {$args[1]}");
+            $mysql->close();
         }
 
         public function init(): void {
@@ -112,10 +108,10 @@
 
 
 
-        private function setEntries(int $start_timelabel, int $end_timelabel): void {
+        private function setEntries(): void {
             $mysql = new \mysqli('localhost', 'Calendar', 'kISARAGIeKI4', 'Calendar');
             $entries_data = $mysql->query("SELECT * FROM {$this->userName}");
-            $this->entries = new Entries($entries_data, $start_timelabel, $end_timelabel);
+            $this->entries = new Entries($entries_data, $this->userName);
             setcookie('last_ID', (string)$this->entries->last_ID, time() + 3600 * 24 * 30, '/');
         }
 
