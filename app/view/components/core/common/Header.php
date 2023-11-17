@@ -3,7 +3,7 @@
 
     use project\core\Router as Router;
 
-    include __DIR__ . '/abstract/iHeader.php';
+    require_once __DIR__ . '/abstract/iHeader.php';
 
     class Header implements iHeader{
         private array $default_files;

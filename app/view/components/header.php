@@ -1,7 +1,7 @@
 <?php 
     use project\view\components\Header as Header;
 
-    include_once __DIR__ . '/core/common/Header.php';
+    require_once __DIR__ . '/core/common/Header.php';
 ?>
 <header class="header">
     <div class="common_Header">

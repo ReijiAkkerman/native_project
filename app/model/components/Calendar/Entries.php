@@ -1,7 +1,7 @@
 <?php
     namespace project\model;
 
-    include_once __DIR__ . '/Entries/Entry.php';
+    require_once __DIR__ . '/Entries/Entry.php';
 
     class Entries {
         public int $last_ID;

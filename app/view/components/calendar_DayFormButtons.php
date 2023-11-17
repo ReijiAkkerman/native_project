@@ -1,7 +1,7 @@
 <?php
     use project\view\components\DayFormButtons as DayFormButtons;
     
-    include_once __DIR__ . '/core/calendar/DayFormButtons.php';
+    require_once __DIR__ . '/core/calendar/DayFormButtons.php';
 ?>
 
 <div class="calendar_DayFormButtons">

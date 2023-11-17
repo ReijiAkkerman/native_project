@@ -4,9 +4,9 @@
     use project\model\Calendar as Calendar;
     use project\model\Words as Words;
 
-    include_once __DIR__ . '/abstract/iView.php';
-    include_once __DIR__ . '/../model/Calendar.php';
-    include_once __DIR__ . '/../model/Words.php';
+    require_once __DIR__ . '/abstract/iView.php';
+    require_once __DIR__ . '/../model/Calendar.php';
+    require_once __DIR__ . '/../model/Words.php';
 
     class View implements iView {
         protected Auth $auth;

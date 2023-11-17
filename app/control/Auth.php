@@ -1,7 +1,7 @@
 <?php
     namespace project\control;
 
-    include_once __DIR__ . '/abstract/iAuth.php';
+    require_once __DIR__ . '/abstract/iAuth.php';
 
     class Auth implements iAuth {
         public bool $access;

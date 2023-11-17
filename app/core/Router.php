@@ -5,12 +5,12 @@
     // use project\control\Auth as Auth;
     // use project\control\Action as Action;
 
-    include_once __DIR__ . '/abstract/iRouter.php';
-    include_once __DIR__ . '/../control/View.php';
-    include_once __DIR__ . '/../control/Auth.php';
-    include_once __DIR__ . '/../control/Action.php';
+    require_once __DIR__ . '/abstract/iRouter.php';
+    require_once __DIR__ . '/../control/View.php';
+    require_once __DIR__ . '/../control/Auth.php';
+    require_once __DIR__ . '/../control/Action.php';
 
-    include_once __DIR__ . '/../control/Test.php';
+    require_once __DIR__ . '/../control/Test.php';
 
     class Router implements iRouter {
         public array $URI;

@@ -1,7 +1,7 @@
 <?php
     namespace project\view\components;
 
-    include_once __DIR__ . '/abstract/iDayFormButtons.php';
+    require_once __DIR__ . '/abstract/iDayFormButtons.php';
 
     class DayFormButtons implements iDayFormButtons {
         private array $order;

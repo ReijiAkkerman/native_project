@@ -3,7 +3,7 @@
 
     use project\core\Router as Router;
 
-    include __DIR__ . '/abstract/iNavigation.php';
+    require_once __DIR__ . '/abstract/iNavigation.php';
 
     class Navigation implements iNavigation{
         private array $order;

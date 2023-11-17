@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<?php include_once __DIR__ . '/components/head.php' ?>
+<?php require_once __DIR__ . '/components/head.php' ?>
     <body class="login_Body">
-    <?php include_once __DIR__ . '/components/header.php' ?>
+    <?php require_once __DIR__ . '/components/header.php' ?>
         <main>
             <section class="login_Login">
                 <form action="../auth/login" method="POST">

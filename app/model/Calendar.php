@@ -3,8 +3,8 @@
 
     use project\control\Auth as Auth;
 
-    include_once __DIR__ . '/abstract/iCalendar.php';
-    include_once __DIR__ . '/components/Calendar/Entries.php';
+    require_once __DIR__ . '/abstract/iCalendar.php';
+    require_once __DIR__ . '/components/Calendar/Entries.php';
 
     class Calendar implements iCalendar {
         public Entries $entries;

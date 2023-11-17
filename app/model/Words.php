@@ -1,7 +1,7 @@
 <?php
     namespace project\model;
 
-    include_once __DIR__ . '/abstract/iWords.php';
+    require_once __DIR__ . '/abstract/iWords.php';
 
     class Words implements iWords {
         public function getWords(): array {

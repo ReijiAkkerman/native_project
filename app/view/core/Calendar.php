@@ -4,9 +4,9 @@
     use project\model\Calendar as model_Calendar;
     use project\model\Entries as Entries;
 
-    include_once __DIR__ . '/abstract/iCalendar.php';
-    include_once __DIR__ . '/../../model/Calendar.php';
-    include_once __DIR__ . '/../../model/components/Calendar/Entries.php';
+    require_once __DIR__ . '/abstract/iCalendar.php';
+    require_once __DIR__ . '/../../model/Calendar.php';
+    require_once __DIR__ . '/../../model/components/Calendar/Entries.php';
 
     class Calendar implements iCalendar {
         public \DateTimeImmutable $current_day;

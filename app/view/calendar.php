@@ -1,5 +1,5 @@
 <?php
-    include_once __DIR__ . '/core/Calendar.php';
+    require_once __DIR__ . '/core/Calendar.php';
 
     use project\view\Calendar as Calendar;
 
@@ -8,10 +8,10 @@
 
 <!DOCTYPE html>
 <html>
-<?php include_once __DIR__ . '/components/head.php' ?>
+<?php require_once __DIR__ . '/components/head.php' ?>
     <body>
-    <?php include_once __DIR__ . '/components/header.php' ?>
-    <?php include_once __DIR__ . '/components/common_Navigation.php' ?>
+    <?php require_once __DIR__ . '/components/header.php' ?>
+    <?php require_once __DIR__ . '/components/common_Navigation.php' ?>
         <main>
             <section class="calendar_Calendar">
                 <div class="calendar_CalendarHeader">
@@ -104,7 +104,7 @@
                             </div>
                         </form>
                     </div>
-                <?php include __DIR__ . '/components/calendar_DayFormButtons.php' ?>
+                <?php require __DIR__ . '/components/calendar_DayFormButtons.php' ?>
                 </div>
             </section>
         </main>
@@ -113,6 +113,6 @@
         </footer>
         <script src="../../js/common.js"></script>
         <script src="../../js/calendar.js"></script>
-    <?php include_once __DIR__ . '/components/templates/calendar_CalendarBodyDayBody/button.php' ?>
+    <?php require_once __DIR__ . '/components/templates/calendar_CalendarBodyDayBody/button.php' ?>
     </body>
 </html>
