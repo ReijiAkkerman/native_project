@@ -1,7 +1,7 @@
 <?php
     namespace project\model;
 
-    use project\control\Auth as Auth;
+    use project\control\Auth;
 
     require_once __DIR__ . '/abstract/iCalendar.php';
     require_once __DIR__ . '/components/Calendar/Entries.php';

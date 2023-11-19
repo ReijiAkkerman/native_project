@@ -1,4 +1,4 @@
-<?php use project\core\Router as Router ?>
+<?php use project\core\Router ?>
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../css/position.css">

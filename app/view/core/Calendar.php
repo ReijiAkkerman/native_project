@@ -2,7 +2,7 @@
     namespace project\view;
 
     use project\model\Calendar as model_Calendar;
-    use project\model\Entries as Entries;
+    use project\model\Entries;
 
     require_once __DIR__ . '/abstract/iCalendar.php';
     require_once __DIR__ . '/../../model/Calendar.php';

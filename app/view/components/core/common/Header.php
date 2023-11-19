@@ -1,7 +1,7 @@
 <?php
     namespace project\view\components;
 
-    use project\core\Router as Router;
+    use project\core\Router;
 
     require_once __DIR__ . '/abstract/iHeader.php';
 

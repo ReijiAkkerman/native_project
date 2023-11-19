@@ -1,5 +1,5 @@
 <?php
-    use project\view\components\DayFormButtons as DayFormButtons;
+    use project\view\components\DayFormButtons;
     
     require_once __DIR__ . '/core/calendar/DayFormButtons.php';
 ?>

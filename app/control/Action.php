@@ -1,7 +1,7 @@
 <?php
     namespace project\control;
 
-    use project\model\Calendar as Calendar;
+    use project\model\Calendar;
 
     require_once __DIR__ . '/abstract/iAction.php';
 

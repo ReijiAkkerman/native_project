@@ -1,5 +1,5 @@
 <?php 
-    use project\view\components\Navigation as Navigation;
+    use project\view\components\Navigation;
 
     require_once __DIR__ . '/core/common/Navigation.php';
 ?>

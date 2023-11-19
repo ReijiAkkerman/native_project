@@ -1,5 +1,5 @@
 <?php 
-    use project\view\components\Header as Header;
+    use project\view\components\Header;
 
     require_once __DIR__ . '/core/common/Header.php';
 ?>

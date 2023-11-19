@@ -1,8 +1,8 @@
 <?php
     namespace project\control;
 
-    use project\model\Calendar as Calendar;
-    use project\model\Words as Words;
+    use project\model\Calendar;
+    use project\model\Words;
 
     require_once __DIR__ . '/abstract/iView.php';
     require_once __DIR__ . '/../model/Calendar.php';

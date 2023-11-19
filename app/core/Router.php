@@ -1,10 +1,6 @@
 <?php
     namespace project\core;
 
-    // use project\control\View as View;
-    // use project\control\Auth as Auth;
-    // use project\control\Action as Action;
-
     require_once __DIR__ . '/abstract/iRouter.php';
     require_once __DIR__ . '/../control/View.php';
     require_once __DIR__ . '/../control/Auth.php';

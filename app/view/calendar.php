@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . '/core/Calendar.php';
 
-    use project\view\Calendar as Calendar;
+    use project\view\Calendar;
 
     $calendar = new Calendar;
 ?>
