@@ -8,6 +8,7 @@
         public function main(): void;
         public function calendar(): void;
         public function words(): void;
+        public function tasks(): void;
 
         public function error(): void;
     }

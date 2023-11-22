@@ -141,4 +141,8 @@
             );
             return $timelabel;
         }
+
+        private function validateMysqlSyntax(\mysqli $mysql): bool {
+            
+        }
     }

@@ -58,6 +58,15 @@
             }
         }
 
+        public function tasks($args = []): void {
+            if($args) {
+
+            }
+            else {
+                $this->auth->validation() ? include __DIR__ . '/../view/tasks.php' : header('Location: ../view/login');
+            }
+        }
+
         
 
 
