@@ -13,7 +13,7 @@
             $this->order = [
                 'main',
                 'calendar',
-                'tasks',
+                'goals',
                 'words'
             ];
             $this->files = array_diff(scandir(__DIR__ . '/../../common_Navigation', SCANDIR_SORT_NONE), ['..', '.']);

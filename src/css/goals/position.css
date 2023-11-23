@@ -1,0 +1,45 @@
+.goals_Objectives {
+    display: block;
+    position: fixed;
+}
+
+.goals_Objective {
+    display: block;
+    position: absolute;
+}
+
+.goals_Tasks {
+    display: block;
+    position: fixed;
+}
+
+.goals_Objectives > div, .goals_Tasks > div {
+    display: block;
+    position: relative;
+}
+
+.goals_Objective > div {
+    display: block;
+    position: relative;
+}
+
+.goals_Objective > div {
+    display: block;
+    position: relative;
+}
+
+.goals_ObjectiveActions {
+    display: block;
+    position: relative;
+}
+
+.goals_ObjectiveActions .group {
+    display: block;
+    position: relative;
+}
+
+.goals_ObjectiveActions .item {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+}

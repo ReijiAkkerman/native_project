@@ -58,12 +58,12 @@
             }
         }
 
-        public function tasks($args = []): void {
+        public function goals($args = []): void {
             if($args) {
 
             }
             else {
-                $this->auth->validation() ? include __DIR__ . '/../view/tasks.php' : header('Location: ../view/login');
+                $this->auth->validation() ? include __DIR__ . '/../view/goals.php' : header('Location: ../view/login');
             }
         }
 

@@ -1,0 +1,152 @@
+:root {
+    --lists-margin: 61px;
+    --borders-color: #000;
+}
+
+.goals_Objectives {
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+}
+
+.goals_Objective {
+    width: 100%;
+}
+
+.goals_Tasks {
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+}
+
+.goals_Objectives > div {
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-top: var(--lists-margin);
+    width: 100%;
+    height: 100%;
+    border-right: 1px var(--borders-color) solid;
+}
+
+.goals_Tasks > div {
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-top: var(--lists-margin);
+    width: 100%;
+    height: 100%;
+    border-left: 1px var(--borders-color) solid;
+}
+
+
+
+
+
+.goals_Objectives pre, .goals_Tasks pre {
+    font-size: 20px;
+}
+
+.goals_Objective > div {
+    margin: 0 200px;
+}
+
+.goals_ObjectiveTitle {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    border-bottom: 1px var(--borders-color) solid;
+}
+
+.goals_ObjectiveTitle > h1 {
+    text-align: center;
+}
+
+.goals_ObjectiveDescription {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    border-bottom: 1px var(--borders-color) solid;
+}
+
+.goals_ObjectiveDescription > p {
+    text-align: left;
+    font-size: 20px;
+}
+
+.goals_ObjectiveActions > .title {
+    border-bottom: 1px var(--borders-color) solid;
+}
+
+.goals_ObjectiveActions > .title > h1 {
+    font-size: 25px;
+    text-align: center;
+}
+
+.goals_ObjectiveActions .group {
+    border-left: 1px var(--borders-color) solid;
+}
+
+.goals_ObjectiveActions .level_1 {
+    padding-right: 5px;
+    border-left: none;
+    border-bottom: 1px var(--borders-color) solid;
+}
+
+.goals_ObjectiveActions .items {
+    margin-left: 5px;
+}
+
+.goals_ObjectiveActions .item {
+    box-sizing: border-box;
+    margin: 5px 5px 5px 0;
+    padding: 5px;
+    width: 100%;
+    background-color: #ddd;
+    border: 1px var(--borders-color) solid;
+}
+
+.goals_ObjectiveActions .item p {
+    line-height: 30px;
+    font-size: 25px;
+    padding: 0 10px;
+    margin: 0 10px;
+    width: 100%;
+    border-left: 1px var(--borders-color) solid;
+    border-right: 1px var(--borders-color) solid;
+}
+
+.goals_ObjectiveActions .item p ~ button {
+    margin-right: 5px;
+}
+
+.goals_ObjectiveActions svg {
+    vertical-align: middle;
+    fill: #000;
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+
+.goals_Tasks button {
+    overflow: hidden;
+    width: 100%;
+    padding: 3px 5px;
+    border-bottom: 1px #888 solid;
+    background-color: #eee;
+}
+
+
+
+
+
+.goals_Objectives button {
+    overflow: hidden;
+    width: 100%;
+    padding: 3px 5px;
+    border-bottom: 1px #888 solid;
+    background-color: #eee;
+}

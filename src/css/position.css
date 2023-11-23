@@ -12,7 +12,7 @@ button {
 
 
 
-.header {
+.common_header {
     display: block;
     position: sticky;
     z-index: 10;

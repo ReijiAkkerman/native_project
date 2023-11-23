@@ -3,7 +3,7 @@
 
     require_once __DIR__ . '/core/common/Header.php';
 ?>
-<header class="header">
+<header class="common_header">
     <div class="common_Header">
         <div class="common_HeaderActions">
             <button onclick="common.showActions();"><h1>&#x3e_</h1></button>
